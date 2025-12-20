@@ -1,18 +1,23 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PostCard, { Post } from '../../entities/ui/PostCard';
 
-interface PostListProps{
-    posts:Post[]
+interface PostListProps {
+    posts: Post[]
 }
-const PostList = ({posts}:PostListProps) => {
+const PostList: React.FC<PostListProps> = ({ posts }) => {
     return (
-        <div style={{display:'flex', gap:'1rem'}}>
+        <div style={{ display: 'flex', gap: '1rem' }}>
             {
-                posts.map((post)=>{
-                    return <PostCard  post={post}/>
+                posts.map((post) => {
+                    return (
+                        <Fragment key={post.id}>
+                            <PostCard post={post} />
+                        </Fragment>
+                    )
+
                 })
             }
-            
+
         </div>
     );
 };
