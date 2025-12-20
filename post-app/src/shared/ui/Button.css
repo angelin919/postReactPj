@@ -1,0 +1,47 @@
+.button {
+    /* Сброс стилей браузера */
+    all: unset;
+    
+    /* Базовые стили */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    
+    padding: 10px 20px;
+    border-radius: 6px;
+    
+    font-family: system-ui, -apple-system, sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.5;
+    
+    cursor: pointer;
+    user-select: none;
+    
+    /* Цвета */
+    background-color: #3b82f6;
+    color: white;
+    
+    /* Эффекты */
+    transition: background-color 0.2s ease;
+    
+  }
+      /* Состояния */
+      .button:hover {
+        background-color: #2563eb;
+      }
+      
+      .button:active {
+        transform: scale(0.98);
+      }
+      
+      .button:focus {
+        outline: 2px solid #3b82f6;
+        outline-offset: 2px;
+      }
+      
+      .button:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        pointer-events: none;
+      }

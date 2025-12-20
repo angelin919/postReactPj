@@ -6,6 +6,7 @@ import Footer from '../widgets/LayoutFooter/Footer'
 import PostCard, { Post } from '../entities/ui/PostCard'
 import PostList from '../widgets/PostList/PostList'
 import MainLayout from '../shared/layouts/MainLayout'
+import ThemeProvider from '../shared/lib/theme/ThemeProvider'
 
 function App() {
   const [posts, setPosts] = useState<Post[]>([])
@@ -26,9 +27,11 @@ function App() {
     return <div>Загрузкаююю</div>
   }
   return (
-    <MainLayout>
-      <PostList posts={posts}/>
-    </MainLayout>
+    <ThemeProvider>
+      <MainLayout>
+        <PostList posts={posts} />
+      </MainLayout>
+    </ThemeProvider>
   )
 }
 
