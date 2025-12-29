@@ -3,6 +3,7 @@ import Button from '../../shared/ui/Button';
 import './Header.css'
 import ThemeSwitcher from '../../features/themeSwitcher/ui/ThemeSwitcher';
 import Modal from '../../shared/ui/modal/Modal';
+import UserTabs from '../UserTabs/UserTabs';
 
 const Header = () => {
     const [isModalOpen, setIsModalOpen] = useState(false)
@@ -33,6 +34,12 @@ const Header = () => {
                 }}>
                     <Button onClick={handleOpenModal}>О проекте</Button>
                     <ThemeSwitcher />
+                    <aside style={{
+                        width: '250px',
+                        flexShrink: 0
+                    }}>
+                        <UserTabs />
+                    </aside>
                 </div>
 
             </header>
@@ -67,8 +74,8 @@ const Header = () => {
                     </div>
                 </Modal.Body>
                 <Modal.Footer>
-                    <button 
-                    onClick={()=>{handleCloseModal()}}
+                    <button
+                        onClick={() => { handleCloseModal() }}
                     >закрыть</button>
                 </Modal.Footer>
 
