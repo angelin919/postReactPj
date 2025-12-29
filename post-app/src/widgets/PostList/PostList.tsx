@@ -1,6 +1,7 @@
 import React, { Fragment, memo, useMemo } from 'react';
 import PostCard, { Post } from '../../entities/ui/PostCard';
 import CommentList, { Comment } from '../CommentList/CommentList'
+import { Link } from 'react-router-dom';
 
 interface PostListProps {
     posts: Post[]
@@ -38,11 +39,13 @@ const PostList: React.FC<PostListProps> = memo(({ posts, comments, filter = '' }
                     return (
                         <Fragment key={post.id} >
                             <div style={{
-                                 display: 'flex', 
-                                 flexDirection: 'column',
-                                 flex: '1 1 300px', 
-                                 }}>
-                                <PostCard post={post} />
+                                display: 'flex',
+                                flexDirection: 'column',
+                                flex: '1 1 300px',
+                            }}>
+                                <Link to={`/posts/${post.id}`}>
+                                    <PostCard post={post} />
+                                </Link>
                                 <CommentList
                                     comments={comments}
                                     postId={post.id}
