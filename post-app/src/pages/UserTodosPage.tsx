@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import TodoList from '../widgets/Todo/UsersTodoList';
 interface Todo {
     id: string
     userId: string
@@ -8,18 +9,20 @@ interface Todo {
 }
 const UserTodosPage = () => {
     const { userId } = useParams<{ userId: string }>()
-    const [todos, setTodos] = useState<Todo[]>([])
-    const [loading, setLoading] = useState(true)
-    console.log({ userId: userId })
-    useEffect(() => {
-        setTodos([{ id: '1', userId: '1', title: 'title', completed: false },
-        ])
-        setLoading(false)
 
-    }, [])
+    if (!userId) {
+        return (
+            <div >
+                <h2>Нет userId</h2>
+            </div>
+        )
+    }
     return (
         <div>
             <h1 style={{ marginBottom: '1.5rem' }}>Задачи пользователя {userId}</h1>
+            <div className="user-todos-page">
+                <TodoList userId={Number(userId)} />
+            </div>
             <Link to="/posts" style={{ color: '#3b82f6' }}>
                 ← Вернуться к списку постов
             </Link>
