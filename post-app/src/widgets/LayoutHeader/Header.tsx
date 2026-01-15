@@ -4,6 +4,7 @@ import './Header.css'
 import ThemeSwitcher from '../../features/themeSwitcher/ui/ThemeSwitcher';
 import Modal from '../../shared/ui/modal/Modal';
 import UserTabs from '../UserTabs/UserTabs';
+import { NavLink } from 'react-router-dom';
 
 const Header = () => {
     const [isModalOpen, setIsModalOpen] = useState(false)
@@ -24,15 +25,27 @@ const Header = () => {
                 padding: '1rem',
                 display: 'flex',
                 justifyContent: 'space-between',
-                alignItems: 'center'
+                alignItems: 'center',
+                flexWrap: 'nowrap',
+                gap: '1rem'
+
             }}>
-                <h1>Post App</h1>
+                <h1 style={{
+                    flexShrink: '0',
+                    margin: '0',
+                }}>Post App</h1>
+
                 <div style={{
                     display: 'flex',
                     justifyContent: 'space-between',
-                    width: '30%'
+                    gap: '1rem'
                 }}>
                     <Button onClick={handleOpenModal}>О проекте</Button>
+
+                        <Button><NavLink style={{textDecoration:'none', color:'#fff'}}to={`/albums`}>Альбомы</NavLink></Button>                    
+                        <Button><NavLink style={{textDecoration:'none', color:'#fff'}}to={`/users`}>Пользователи</NavLink></Button>
+                        <Button><NavLink style={{textDecoration:'none', color:'#fff'}}to={`/todos`}>ToDos</NavLink></Button>
+
                     <ThemeSwitcher />
                     <aside style={{
                         width: '250px',

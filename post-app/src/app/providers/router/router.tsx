@@ -1,12 +1,35 @@
+import { lazy, Suspense } from 'react';
+
 import { createBrowserRouter } from "react-router-dom";
 import MainLayout from "../../../shared/layouts/MainLayout";
 import PostsPage from "../../../pages/PostsPage";
 import PostDetailsPage from "../../../pages/PostDetailsPage";
-import AlbumPhotosPage from "../../../pages/AlbumPhotosPage";
-import UserTodosPage from "../../../pages/UserTodosPage";
+// import UserTodosPage from "../../../pages/UserTodosPage";
 import UserPostsPage from "../../../pages/UserPostsPage";
-import UserAlbumsPage from "../../../pages/UserAlbumsPage";
+import UsersPage from '../../../pages/UsersPage';
+import TodoPage from '../../../pages/TodoPage';
+// import UserAlbumsPage from "../../../pages/UserAlbumsPage";
+// import AlbumPhotosPage from "../../../pages/AlbumPhotosPage";
 
+const AlbumsPage = lazy(() => import('../../../pages/AlbumsPage'));
+const PhotosPage = lazy(() => import('../../../pages/PhotosPage'));
+const UserTodosPage = lazy(() => import('../../../pages/UserTodosPage'));
+const UserAlbumsPage = lazy(() => import('../../../pages/UserAlbumsPage'));
+const AlbumPhotosPage = lazy(() => import('../../../pages/AlbumPhotosPage'));
+
+
+
+
+const Loader = () => (
+    <div style={{ 
+        display: 'flex', 
+        justifyContent: 'center', 
+        alignItems: 'center', 
+        minHeight: '100vh' 
+    }}>
+        <div>Загрузка...</div>
+    </div>
+)
 
 
 export const router = createBrowserRouter([
@@ -31,6 +54,27 @@ export const router = createBrowserRouter([
                 ]
 
             },
+            {
+                path: 'albums',
+                element: (
+                    <Suspense fallback={<Loader />}>
+                        <AlbumsPage />
+                    </Suspense>
+                ),
+            },
+            {
+                path: 'albums/:albumId',
+                element: (
+                    <Suspense fallback={<Loader />}>
+                        <PhotosPage />
+                    </Suspense>
+                ),
+            },
+            {
+                path: 'users',
+                element: <UsersPage />
+                ,
+            },
 
 
         ]
@@ -40,15 +84,27 @@ export const router = createBrowserRouter([
         children: [
             {
                 path: 'albums',
-                element: <UserAlbumsPage />,
+                element: (
+                    <Suspense fallback={<Loader />}>
+                        <UserAlbumsPage />
+                    </Suspense>
+                ),
             },
             {
                 path: 'albums/:albumId/photos',
-                element: <AlbumPhotosPage />,
+                element: (
+                    <Suspense fallback={<Loader />}>
+                        <AlbumPhotosPage />
+                    </Suspense>
+                ),
             },
             {
                 path: 'todos',
-                element: <UserTodosPage />,
+                element: (
+                    <Suspense fallback={<Loader />}>
+                        <UserTodosPage />
+                    </Suspense>
+                ),
             },
             {
                 path: 'posts',
@@ -56,5 +112,16 @@ export const router = createBrowserRouter([
             },
         ],
 
-    }
+    },
+    {
+        path: 'todos',
+        children: [
+          {
+            index: true,
+            element: <TodoPage />,
+          },
+        ]
+        }
+
+
 ])

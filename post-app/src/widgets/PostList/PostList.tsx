@@ -32,7 +32,11 @@ const PostList: React.FC<PostListProps> = memo(({ posts, comments, filter = '' }
         )
     }
     return (
-        <div style={{ display: 'flex', gap: '1rem' }}>
+        <div style={{
+            display: 'flex',
+            gap: '1rem',
+            flexWrap: 'wrap'
+        }}>
 
             {
                 filteredPosts.map((post) => {

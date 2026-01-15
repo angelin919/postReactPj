@@ -20,7 +20,7 @@ const AlbumPhotosPage = () => {
     },[])
     return (
         <div>
-            <h1>Здесь Альбом</h1>
+            <h1>Здесь Альбом и только</h1>
             <Link to='/posts'>На главную</Link>
         </div>
     );
