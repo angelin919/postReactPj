@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { Post } from '../entities/ui/PostCard';
+import { Post } from '../shared/types/post'; 
 import { LengthFilter, filterByLength } from '../features/postLengthFilter/lib/filterByLength';
 import { usePosts } from '../features/postList/model/hooks/usePosts';
 import PostLenghtFilter from '../features/postLengthFilter/ui/PostLengthFilter';

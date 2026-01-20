@@ -1,4 +1,5 @@
-import {Album, Photo} from '../types/Album'
+import { Album, Photo } from "../types/album";
+
 const BASE_URL = 'https://jsonplaceholder.typicode.com';
 
 export class AlbumsApi {

@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { commentsApi } from '../../../shared/api/commentsApi'
-import { Comment } from '../../..//widgets/CommentList/CommentList'
+import { Comment } from '../../../shared/types/comment'; 
 interface CommentsState {
     comments: Comment[]
     selectedComment: Comment | null;

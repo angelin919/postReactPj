@@ -1,4 +1,4 @@
-import { Comment } from "../../widgets/CommentList/CommentList";
+import { Comment } from "../types/comment"; 
 
 const BASE_URL = 'https://jsonplaceholder.typicode.com';
 

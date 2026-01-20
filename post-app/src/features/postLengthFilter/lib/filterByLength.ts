@@ -1,4 +1,4 @@
-import { Post } from "../../../entities/ui/PostCard"
+import { Post } from "../../../shared/types/post" 
 
 export type LengthFilter = 'all' | 'short' | 'medium' | 'long'
 export const filterByLength = (posts: Post[], filter: LengthFilter): Post[] => {

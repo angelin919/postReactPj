@@ -1,7 +1,10 @@
 import React, { Fragment, memo, useMemo } from 'react';
-import PostCard, { Post } from '../../entities/ui/PostCard';
-import CommentList, { Comment } from '../CommentList/CommentList'
+import PostCard from '../../entities/ui/PostCard';
+import CommentList from '../CommentList/CommentList'
+import { Comment } from '../../shared/types/comment';
 import { Link } from 'react-router-dom';
+import { Post } from '../../shared/types/post';
+import ItemList from '../../shared/ui/itemList/ItemList';
 
 interface PostListProps {
     posts: Post[]
@@ -39,27 +42,41 @@ const PostList: React.FC<PostListProps> = memo(({ posts, comments, filter = '' }
         }}>
 
             {
-                filteredPosts.map((post) => {
-                    return (
-                        <Fragment key={post.id} >
-                            <div style={{
-                                display: 'flex',
-                                flexDirection: 'column',
-                                flex: '1 1 300px',
-                            }}>
-                                <Link to={`/posts/${post.id}`}>
-                                    <PostCard post={post} />
-                                </Link>
-                                <CommentList
-                                    comments={comments}
-                                    postId={post.id}
-                                />
-                            </div>
+                // filteredPosts.map((post) => {
+                //     return (
+                //         <Fragment key={post.id} >
+                //             <div style={{
+                //                 display: 'flex',
+                //                 flexDirection: 'column',
+                //                 flex: '1 1 300px',
+                //             }}>
+                //                 <Link to={`/posts/${post.id}`}>
+                //                     <PostCard post={post} />
+                //                 </Link>
+                //                 <CommentList
+                //                     comments={comments}
+                //                     postId={post.id}
+                //                 />
+                //             </div>
 
-                        </Fragment>
-                    )
+                //         </Fragment>
+                //     )
 
-                })
+                // })
+                <ItemList
+                    items={filteredPosts}
+                    additionalData={{comments}}
+                    renderItem={((post, additionalData) => 
+                        <>
+                        <PostCard post={post} />
+                        {
+                            additionalData?.comments && (
+                                <CommentList comments={comments} postId={post.id}/>
+                            )
+                        }
+                        </>
+                    )}
+                />
             }
 
         </div>

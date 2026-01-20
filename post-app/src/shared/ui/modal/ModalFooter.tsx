@@ -1,9 +1,7 @@
-import React from 'react';
-interface ModalFooterProps {
-    children: React.ReactNode
-  }
+import React,{PropsWithChildren} from 'react';
 
-const ModalFooter:React.FC<ModalFooterProps> = ({children}) => {
+
+const ModalFooter = ({children}:PropsWithChildren) => {
     return (
         <div style={{
             padding: '1rem 1.5rem',
