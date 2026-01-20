@@ -1,15 +1,15 @@
-import React from 'react';
-import { ModalContext } from './ModalContaxt'
+import React, {PropsWithChildren, MouseEventHandler} from 'react';
+import { ModalContext } from './ModalContext'
 import ModalHeader from './ModalHeader'
 import ModalBody from './ModalBody'
 import ModalFooter from './ModalFooter'
 
 
 
-interface ModalProps {
+interface ModalProps extends PropsWithChildren {
     isOpen: boolean
-    onClose: () => void
-    children: React.ReactNode
+    onClose: MouseEventHandler<HTMLDivElement | HTMLButtonElement>
+    // children: React.ReactNode
 }
 
 const Modal: React.FC<ModalProps> & {
@@ -19,6 +19,14 @@ const Modal: React.FC<ModalProps> & {
 
 } = ({ isOpen, onClose, children }) => {
     if (!isOpen) return null
+    const handleOverlayClick: MouseEventHandler<HTMLDivElement> = (e) => {
+        if (e.target === e.currentTarget) {
+            console.log(e.target, 'e.target')
+            console.log(e.currentTarget, 'e.currentTarget')
+
+            onClose(e);
+        }
+    };
     return (
         <>
         <div
@@ -34,7 +42,7 @@ const Modal: React.FC<ModalProps> & {
                 justifyContent: 'center',
                 zIndex: 1000,
             }}
-            onClick={onClose}
+            onClick={handleOverlayClick}
         >
         <ModalContext.Provider value={{ isOpen, onClose }}>
             <div

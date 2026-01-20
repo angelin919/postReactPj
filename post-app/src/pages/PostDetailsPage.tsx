@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { Post } from '../entities/ui/PostCard';
+import { Post } from '../shared/types/post'; 
 import { Link, useParams } from 'react-router-dom';
 import { getAllPosts } from '../shared/data/posts';
 import { usePosts } from '../features/postList/model/hooks/usePosts';
-import { Comment } from '../widgets/CommentList/CommentList';
+import { Comment } from '../shared/types/comment'; 
 
 const PostDetailsPage = () => {
 

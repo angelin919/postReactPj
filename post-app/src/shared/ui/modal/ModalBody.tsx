@@ -1,9 +1,7 @@
-import React from 'react';
+import React ,{PropsWithChildren} from 'react';
 
-interface ModalBodyProps{
-    children:React.ReactNode
-}
-const ModalBody:React.FC<ModalBodyProps> = ({children}) => {
+
+const ModalBody = ({children}:PropsWithChildren) => {
     return (
         <div
         

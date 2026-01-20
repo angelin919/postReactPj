@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Album, Photo } from '../../../shared/types/Album';
 import { albumsApi } from '../../../shared/api/albumsApi';
+import { Album, Photo } from '../../../shared/types/album';
 
 interface AlbumsState {
     albums: Album[],

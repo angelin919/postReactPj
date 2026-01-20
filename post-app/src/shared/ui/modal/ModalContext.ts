@@ -1,8 +1,8 @@
-import { createContext, useContext } from "react"
+import { createContext, useContext,MouseEventHandler } from "react"
 
-interface ModalContextType{
+interface ModalContextType {
     isOpen:boolean
-    onClose: ()=>void
+    onClose: MouseEventHandler<HTMLDivElement | HTMLButtonElement>
 }
 
 export const ModalContext = createContext<ModalContextType | undefined>(undefined)

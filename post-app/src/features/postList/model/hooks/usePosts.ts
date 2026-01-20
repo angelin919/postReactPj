@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react'
-import { Post } from '../../../../entities/ui/PostCard'
-import { Comment } from '../../../../widgets/CommentList/CommentList'
+import { Post } from '../../../../shared/types/post' 
+import { Comment } from '../../../../shared/types/comment' 
 import { getAllPosts, getPostById, getPostsByUserId } from '../../../../shared/data/posts'
 import { getAllComments, getCommentsByPostId } from '../../../../shared/data/comments'
 

@@ -1,7 +1,7 @@
 import { createEntityAdapter, createSlice, PayloadAction,createAsyncThunk } from '@reduxjs/toolkit';
-import { Post } from '../../ui/PostCard';
+import { Post } from '../../../shared/types/post'; 
 import { apiPosts } from '../../../shared/api/postApi';
-import { Comment } from '../../../widgets/CommentList/CommentList';
+import { Comment } from '../../../shared/types/comment'; 
 
 interface PostsState{
     posts:Post[]

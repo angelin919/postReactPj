@@ -1,4 +1,4 @@
-import { Comment } from '../../widgets/CommentList/CommentList'
+import { Comment } from "../types/comment" 
 
 export const mockComments: Comment[] = [
     { 

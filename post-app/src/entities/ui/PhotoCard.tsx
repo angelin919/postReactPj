@@ -1,5 +1,5 @@
 import React from 'react';
-import { Photo } from '../../shared/types/Album';
+import { Photo } from '../../shared/types/album';
 
 interface PhotoCardProps {
     photo: Photo;
